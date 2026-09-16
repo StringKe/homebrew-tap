@@ -1,0 +1,31 @@
+name: sync
+
+on:
+  schedule:
+    - cron: "17 * * * *"
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "版本号（留空取最新 release）"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Regenerate formula
+        run: scripts/sync.sh "${{ github.event.inputs.version }}"
+      - name: Commit
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add Formula/tomato-cli.rb
+          git diff --cached --quiet && exit 0
+          version=$(grep -m1 '^  version ' Formula/tomato-cli.rb | cut -d'"' -f2)
+          git commit -m "chore(formula): 同步 tomato-cli v${version}"
+          git push
