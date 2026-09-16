@@ -5,23 +5,23 @@ class TomatoCli < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/StringKe/tomato-cli/releases/download/v0.1.1/tomato-aarch64-apple-darwin.tar.gz"
-      sha256 "f1bacd87712a6ac7b282b66da50808ce276a7c8dc143dff11a696974501240a6"
+      url "https://github.com/StringKe/tomato-cli/releases/download/v0.1.2/tomato-aarch64-apple-darwin.tar.gz"
+      sha256 "5a78310b8ca8b3d19324315e5ada3f62d6b1cc41a78cde7a20df884606e248b2"
     end
     on_intel do
-      url "https://github.com/StringKe/tomato-cli/releases/download/v0.1.1/tomato-x86_64-apple-darwin.tar.gz"
-      sha256 "4c6a7b1edb337df556306d677e0ae0f6f18685e1e6fde52d248010696d00caf9"
+      url "https://github.com/StringKe/tomato-cli/releases/download/v0.1.2/tomato-x86_64-apple-darwin.tar.gz"
+      sha256 "e9099abad89f64ae764723834839959e6d3d4da295eac03ca0ed25ce056cb5d2"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/StringKe/tomato-cli/releases/download/v0.1.1/tomato-aarch64-unknown-linux-gnu.tar.gz"
-      sha256 "8543d25b382bf9a21b07efd0d55ed893cb15ada8e9e1ec582abcbfd48809e262"
+      url "https://github.com/StringKe/tomato-cli/releases/download/v0.1.2/tomato-aarch64-unknown-linux-gnu.tar.gz"
+      sha256 "b39ba1c6bf1298ee48b63255e5023788e15957be90ca58f45c09ea0e1c9c2e85"
     end
     on_intel do
-      url "https://github.com/StringKe/tomato-cli/releases/download/v0.1.1/tomato-x86_64-unknown-linux-gnu.tar.gz"
-      sha256 "e245d61b2f6e59bb5625459dc465ee2a0ebd9aec68b8619ba11d5b03a87f52df"
+      url "https://github.com/StringKe/tomato-cli/releases/download/v0.1.2/tomato-x86_64-unknown-linux-gnu.tar.gz"
+      sha256 "47bd098de5cc0f11a7d5b023f12ca4c3d564d0f4077b8cf9c89f0376c951eff0"
     end
   end
 
