@@ -1,7 +1,6 @@
 class TomatoCli < Formula
   desc "番茄小说终端阅读器"
   homepage "https://github.com/StringKe/tomato-cli"
-  version "0.1.0"
   license "MIT"
 
   on_macos do
