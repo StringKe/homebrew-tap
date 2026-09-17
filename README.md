@@ -14,3 +14,16 @@ brew upgrade StringKe/tap/tomato-cli
 安装后命令是 `tomato`。Homebrew 装的版本用 `brew upgrade StringKe/tap/tomato-cli` 更新；`tomato update` 会识别出 Homebrew 安装并转去执行同一条命令，不会自行替换二进制。
 
 Formula 由 `scripts/sync.sh` 从 tomato-cli 的 GitHub Release 生成（`templates/tomato-cli.rb` 是模板），`sync.yml` 每小时检查一次最新 release，也可以手动触发并指定版本号。
+
+## stdagent
+
+AI CLI 配置同步工具，仓库：https://github.com/StringKe/std-agent
+
+```sh
+brew install StringKe/tap/stdagent
+brew upgrade StringKe/tap/stdagent
+```
+
+安装后命令是 `stdagent`，用 `brew upgrade StringKe/tap/stdagent` 更新。
+
+Formula 由 `scripts/sync.sh stdagent` 从 std-agent 的 GitHub Release 生成（`templates/stdagent.rb` 是模板），`sync.yml` 每小时同步两个包，也可以手动触发。

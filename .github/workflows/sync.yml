@@ -18,14 +18,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Regenerate formula
-        run: scripts/sync.sh "${{ github.event.inputs.version }}"
+      - name: Regenerate formulae
+        run: |
+          version="${{ github.event.inputs.version }}"
+          scripts/sync.sh tomato-cli "$version"
+          scripts/sync.sh stdagent "$version"
       - name: Commit
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Formula/tomato-cli.rb
+          git add Formula/tomato-cli.rb Formula/stdagent.rb
           git diff --cached --quiet && exit 0
-          version=$(grep -o -m1 'download/v[0-9.]*' Formula/tomato-cli.rb | cut -c11-)
-          git commit -m "chore(formula): 同步 tomato-cli v${version}"
+          git commit -m "chore(formula): 同步 formulae"
           git push
