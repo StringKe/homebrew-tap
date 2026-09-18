@@ -5,23 +5,23 @@ class Stdagent < Formula
 
   on_macos do
     on_arm do
-      url "https://github.com/StringKe/std-agent/releases/download/v0.0.21/std-agent_0.0.21_darwin_arm64.tar.gz"
-      sha256 "af51f68cf50be5e35ebfc8ff4ac277b63f2630f0b98f933e35c5c9a7e82f2772"
+      url "https://github.com/StringKe/std-agent/releases/download/v0.0.22/std-agent_0.0.22_darwin_arm64.tar.gz"
+      sha256 "7c0638f55ae829aa2d7063f0693959dc1f7cdc48689888d14ed9bfb282b1bb75"
     end
     on_intel do
-      url "https://github.com/StringKe/std-agent/releases/download/v0.0.21/std-agent_0.0.21_darwin_amd64.tar.gz"
-      sha256 "1a103ea82b1b4aed09b98442bbdcb9581b300359e408ad677dcf069586e8f8a0"
+      url "https://github.com/StringKe/std-agent/releases/download/v0.0.22/std-agent_0.0.22_darwin_amd64.tar.gz"
+      sha256 "6743962e14b0a1fa2784aa1f05fab27b98506f3d2cdeb7f0f1ca93257584f9fc"
     end
   end
 
   on_linux do
     on_arm do
-      url "https://github.com/StringKe/std-agent/releases/download/v0.0.21/std-agent_0.0.21_linux_arm64.tar.gz"
-      sha256 "ed018ed5a3e1c76a5cb28851c28937946f8227e0f8b985f2088588d41db0a8af"
+      url "https://github.com/StringKe/std-agent/releases/download/v0.0.22/std-agent_0.0.22_linux_arm64.tar.gz"
+      sha256 "82921ab8cf5668b42d87c0484f10bb9e308a1bdbd059684433fb2b727e4465d0"
     end
     on_intel do
-      url "https://github.com/StringKe/std-agent/releases/download/v0.0.21/std-agent_0.0.21_linux_amd64.tar.gz"
-      sha256 "0e340ba6fb1b6ad12b4d183251f0b1f1982a2db165ebcf2506022d163fc1d824"
+      url "https://github.com/StringKe/std-agent/releases/download/v0.0.22/std-agent_0.0.22_linux_amd64.tar.gz"
+      sha256 "1856dccd0031c0951c66df79603404175da8b95cf011c13af907efb4b9eb6f76"
     end
   end
 
