@@ -6,8 +6,8 @@ set -eu
 
 ROOT=$(cd "$(dirname "$0")/.." && pwd)
 
-if ! command -v jq >/dev/null 2>&1; then
-  echo "需要 jq" >&2
+if ! command -v gh >/dev/null 2>&1; then
+  echo "需要 gh" >&2
   exit 1
 fi
 
@@ -26,7 +26,7 @@ sha_of() {
 }
 
 latest_version() {
-  tag=$(curl -fsSL --retry 3 "https://api.github.com/repos/$1/releases/latest" | jq -r .tag_name)
+  tag=$(gh release view --repo "$1" --json tagName --jq .tagName)
   printf '%s' "${tag#v}"
 }
 

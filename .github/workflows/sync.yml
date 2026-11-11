@@ -19,15 +19,31 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Regenerate formulae
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
           version="${{ github.event.inputs.version }}"
           scripts/sync.sh tomato-cli "$version"
           scripts/sync.sh stdagent "$version"
       - name: Commit
+        env:
+          GH_TOKEN: ${{ github.token }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add Formula/tomato-cli.rb Formula/stdagent.rb
-          git diff --cached --quiet && exit 0
-          git commit -m "chore(formula): 同步 formulae"
-          git push
+          git diff --quiet -- Formula/tomato-cli.rb Formula/stdagent.rb && exit 0
+          jq -n \
+            --arg repo "$GITHUB_REPOSITORY" \
+            --arg branch "$GITHUB_REF_NAME" \
+            --arg head "$(git rev-parse HEAD)" \
+            --arg tomato "$(base64 -w0 Formula/tomato-cli.rb)" \
+            --arg stdagent "$(base64 -w0 Formula/stdagent.rb)" \
+            '{query: "mutation($input: CreateCommitOnBranchInput!) { createCommitOnBranch(input: $input) { commit { oid } } }",
+              variables: {input: {
+                branch: {repositoryNameWithOwner: $repo, branchName: $branch},
+                expectedHeadOid: $head,
+                message: {headline: "chore(formula): 同步 formulae"},
+                fileChanges: {additions: [
+                  {path: "Formula/tomato-cli.rb", contents: $tomato},
+                  {path: "Formula/stdagent.rb", contents: $stdagent}
+                ]}
+              }}}' \
+            | gh api graphql --input -
